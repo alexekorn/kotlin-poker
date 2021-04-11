@@ -1,7 +1,7 @@
 plugins {
-    java
-    kotlin ("jvm") version "1.4.32"
+    kotlin("jvm") version "1.4.32"
     application
+    id("org.jmailen.kotlinter") version "3.4.0"
 }
 
 repositories {

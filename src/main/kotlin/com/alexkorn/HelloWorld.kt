@@ -2,7 +2,6 @@ package com.alexkorn
 
 class HelloWorld {
     fun doAThing(input: Int): Int = input * 2
-
 }
 
 object Main {
