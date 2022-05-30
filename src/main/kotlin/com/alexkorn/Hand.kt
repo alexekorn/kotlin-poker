@@ -34,6 +34,9 @@ class Hand(private val cards: Array<Card>) {
         val isStraight = this.isStraight()
         val groupedCards = this.groupCards()
 
+        /**
+         * Count -> list of ranks
+         */
         var multiples = HashMap<Int, ArrayList<Int>>()
 
         for ((rank, group) in groupedCards) {
@@ -48,9 +51,20 @@ class Hand(private val cards: Array<Card>) {
             9
         } else if (multiples.containsKey(4)) {
             8
+        } else if (multiples.containsKey(3) && multiples.containsKey(2)) {
+            7
+        } else if (isFlush) {
+            6
+        } else if (isStraight) {
+            5
+        } else if (multiples.containsKey(3)) {
+            4
+        } else if (multiples.containsKey(2) && multiples[2]!!.count() == 2) {
+            3
+        } else if (multiples.containsKey(2)) {
+            2
         } else {
-            // TODO
-            0
+            1
         }
 
         return majorRank.toString()

@@ -113,4 +113,88 @@ internal class HandTest {
         val hand = Hand(cards)
         assertEquals("8", hand.getRank())
     }
+    @Test
+    internal fun testGetRank_FullHouse() {
+        val cards = arrayOf(
+            Card(3, Card.CardConstants.SUIT_SPADES),
+            Card(3, Card.CardConstants.SUIT_HEARTS),
+            Card(3, Card.CardConstants.SUIT_CLUBS),
+            Card(6, Card.CardConstants.SUIT_DIAMONDS),
+            Card(6, Card.CardConstants.SUIT_SPADES),
+        )
+        val hand = Hand(cards)
+        assertEquals("7", hand.getRank())
+    }
+    @Test
+    internal fun testGetRank_Flush() {
+        val cards = arrayOf(
+            Card(3, Card.CardConstants.SUIT_SPADES),
+            Card(5, Card.CardConstants.SUIT_SPADES),
+            Card(7, Card.CardConstants.SUIT_SPADES),
+            Card(8, Card.CardConstants.SUIT_SPADES),
+            Card(10, Card.CardConstants.SUIT_SPADES),
+        )
+        val hand = Hand(cards)
+        assertEquals("6", hand.getRank())
+    }
+    @Test
+    internal fun testGetRank_Straight() {
+        val cards = arrayOf(
+            Card(3, Card.CardConstants.SUIT_SPADES),
+            Card(4, Card.CardConstants.SUIT_HEARTS),
+            Card(5, Card.CardConstants.SUIT_SPADES),
+            Card(6, Card.CardConstants.SUIT_SPADES),
+            Card(7, Card.CardConstants.SUIT_SPADES),
+        )
+        val hand = Hand(cards)
+        assertEquals("5", hand.getRank())
+    }
+    @Test
+    internal fun testGetRank_ThreeOfAKind() {
+        val cards = arrayOf(
+            Card(3, Card.CardConstants.SUIT_SPADES),
+            Card(3, Card.CardConstants.SUIT_HEARTS),
+            Card(3, Card.CardConstants.SUIT_CLUBS),
+            Card(6, Card.CardConstants.SUIT_SPADES),
+            Card(7, Card.CardConstants.SUIT_SPADES),
+        )
+        val hand = Hand(cards)
+        assertEquals("4", hand.getRank())
+    }
+    @Test
+    internal fun testGetRank_TwoPair() {
+        val cards = arrayOf(
+            Card(3, Card.CardConstants.SUIT_SPADES),
+            Card(3, Card.CardConstants.SUIT_HEARTS),
+            Card(6, Card.CardConstants.SUIT_CLUBS),
+            Card(6, Card.CardConstants.SUIT_SPADES),
+            Card(7, Card.CardConstants.SUIT_SPADES),
+        )
+        val hand = Hand(cards)
+        assertEquals("3", hand.getRank())
+    }
+    @Test
+    internal fun testGetRank_Pair() {
+        val cards = arrayOf(
+            Card(3, Card.CardConstants.SUIT_SPADES),
+            Card(3, Card.CardConstants.SUIT_HEARTS),
+            Card(6, Card.CardConstants.SUIT_CLUBS),
+            Card(7, Card.CardConstants.SUIT_SPADES),
+            Card(8, Card.CardConstants.SUIT_SPADES),
+        )
+        val hand = Hand(cards)
+        assertEquals("2", hand.getRank())
+    }
+    @Test
+    internal fun testGetRank_HighCard() {
+        val cards = arrayOf(
+            Card(3, Card.CardConstants.SUIT_SPADES),
+            Card(4, Card.CardConstants.SUIT_HEARTS),
+            Card(6, Card.CardConstants.SUIT_CLUBS),
+            Card(7, Card.CardConstants.SUIT_SPADES),
+            Card(9, Card.CardConstants.SUIT_SPADES),
+        )
+        val hand = Hand(cards)
+        assertEquals("1", hand.getRank())
+    }
 }
