@@ -34,8 +34,26 @@ class Hand(private val cards: Array<Card>) {
         val isStraight = this.isStraight()
         val groupedCards = this.groupCards()
 
-        // TODO
-        return "1.1"
+        var multiples = HashMap<Int, ArrayList<Int>>()
+
+        for ((rank, group) in groupedCards) {
+            val count = group.count()
+            if (!multiples.containsKey(count)) {
+                multiples[count] = ArrayList<Int>()
+            }
+            multiples[count]!!.add(rank)
+        }
+
+        var majorRank: Int = if (isFlush && isStraight) {
+            9
+        } else if (multiples.containsKey(4)) {
+            8
+        } else {
+            // TODO
+            0
+        }
+
+        return majorRank.toString()
     }
 
     fun isFlush(): Boolean {

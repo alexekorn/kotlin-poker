@@ -90,7 +90,7 @@ internal class HandTest {
     }
 
     @Test
-    internal fun testGetRank() {
+    internal fun testGetRank_StraightFlush() {
         val cards = arrayOf(
             Card(2, Card.CardConstants.SUIT_SPADES),
             Card(3, Card.CardConstants.SUIT_SPADES),
@@ -99,6 +99,18 @@ internal class HandTest {
             Card(6, Card.CardConstants.SUIT_SPADES),
         )
         val hand = Hand(cards)
-        assertEquals("1.1", hand.getRank())
+        assertEquals("9", hand.getRank())
+    }
+    @Test
+    internal fun testGetRank_FourOfAKind() {
+        val cards = arrayOf(
+            Card(3, Card.CardConstants.SUIT_SPADES),
+            Card(3, Card.CardConstants.SUIT_HEARTS),
+            Card(3, Card.CardConstants.SUIT_CLUBS),
+            Card(3, Card.CardConstants.SUIT_DIAMONDS),
+            Card(6, Card.CardConstants.SUIT_SPADES),
+        )
+        val hand = Hand(cards)
+        assertEquals("8", hand.getRank())
     }
 }
