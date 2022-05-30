@@ -1,5 +1,8 @@
 package com.alexkorn
 
 class Poker {
-    fun doAThing(input: Int): Int = input * 2
+    fun createDeck(): Deck {
+        var deck = Deck()
+        return deck
+    }
 }
