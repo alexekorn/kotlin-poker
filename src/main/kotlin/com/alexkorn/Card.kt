@@ -31,4 +31,15 @@ class Card(private val rank: Int, private val suit: String) {
         result = result.plus(suitMap[suit])
         return result
     }
+
+    /**
+     * TODO how to handle Ace?
+     */
+    fun getRank(): Int {
+        return rank
+    }
+
+    fun getSuit(): String? {
+        return suit
+    }
 }

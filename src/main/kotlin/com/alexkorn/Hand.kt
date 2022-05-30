@@ -10,6 +10,7 @@ class Hand(private val cards: Array<Card>) {
         if (cards.count() != 5) {
             throw IllegalArgumentException("A hand must have 5 cards")
         }
+        cards.sortBy { it.getRank() }
     }
 
     /**
@@ -27,7 +28,38 @@ class Hand(private val cards: Array<Card>) {
      * 1. High card
      */
     fun getRank(): String {
+
+
         // TODO
         return "1.1"
+    }
+
+    fun isFlush(): Boolean {
+        var lastSuit: String? = null
+        for (card in cards) {
+            if (lastSuit == null) {
+                lastSuit = card.getSuit()
+                continue
+            }
+            if (card.getSuit() != lastSuit) {
+                return false
+            }
+            lastSuit = card.getSuit()
+        }
+        return true
+    }
+    fun isStraight(): Boolean {
+        var lastRank: Int? = null
+        for (card in cards) {
+            if (lastRank == null) {
+                lastRank = card.getRank()
+                continue
+            }
+            if (card.getRank() != lastRank + 1) {
+                return false
+            }
+            lastRank = card.getRank()
+        }
+        return true
     }
 }
