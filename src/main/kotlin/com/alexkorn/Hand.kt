@@ -1,6 +1,8 @@
 package com.alexkorn
 
 import java.lang.IllegalArgumentException
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * A hand of 5 cards.
@@ -28,7 +30,9 @@ class Hand(private val cards: Array<Card>) {
      * 1. High card
      */
     fun getRank(): String {
-
+        val isFlush = this.isFlush()
+        val isStraight = this.isStraight()
+        val groupedCards = this.groupCards()
 
         // TODO
         return "1.1"
@@ -61,5 +65,17 @@ class Hand(private val cards: Array<Card>) {
             lastRank = card.getRank()
         }
         return true
+    }
+    fun groupCards(): Map<Int, ArrayList<Card>> {
+        var groupedCards = HashMap<Int, ArrayList<Card>>()
+        for (card in cards) {
+            if (!groupedCards.containsKey(card.getRank())) {
+                groupedCards[card.getRank()] = ArrayList<Card>()
+            }
+            groupedCards[card.getRank()]!!.add(card)
+        }
+        return groupedCards.toList().sortedByDescending {
+                (_, value) -> value.count()
+        }.toMap()
     }
 }

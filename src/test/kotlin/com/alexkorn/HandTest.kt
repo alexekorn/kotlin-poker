@@ -72,6 +72,24 @@ internal class HandTest {
     }
 
     @Test
+    internal fun testGroupCards() {
+        val cards = arrayOf(
+            Card(2, Card.CardConstants.SUIT_SPADES),
+            Card(3, Card.CardConstants.SUIT_HEARTS),
+            Card(3, Card.CardConstants.SUIT_SPADES),
+            Card(4, Card.CardConstants.SUIT_CLUBS),
+            Card(2, Card.CardConstants.SUIT_HEARTS),
+        )
+        val hand = Hand(cards)
+        print(hand.groupCards())
+        val result = hand.groupCards();
+        assertEquals(linkedSetOf(2, 3, 4), result.keys)
+        assertEquals(2, result[2]!!.count())
+        assertEquals(2, result[3]!!.count())
+        assertEquals(1, result[4]!!.count())
+    }
+
+    @Test
     internal fun testGetRank() {
         val cards = arrayOf(
             Card(2, Card.CardConstants.SUIT_SPADES),
