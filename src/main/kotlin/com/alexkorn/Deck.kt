@@ -1,5 +1,11 @@
 package com.alexkorn
 
+/**
+ * A deck of cards.
+ *
+ * This is a standard 52-card deck:
+ * https://en.wikipedia.org/wiki/Standard_52-card_deck
+ */
 class Deck() {
     private var cards = ArrayList<Card>()
 
