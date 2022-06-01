@@ -1,6 +1,6 @@
 Run the application with parameter `3`:
 ```
-./gradlew installDist && ./build/install/kotlin-sandbox/bin/kotlin-sandbox 3
+./gradlew installDist && ./build/install/kotlin-poker/bin/kotlin-poker 3
 ```
 
 Format and check code:
